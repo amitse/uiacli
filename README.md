@@ -240,6 +240,18 @@ The server shuts down automatically after 30 minutes of inactivity.
 - **No UAC access** — cannot automate elevated (admin) windows from a non-elevated process
 - **Local only** — the server binds to `localhost`; remote automation is not supported
 
+## Contributing
+
+Contributions are welcome! Here's how to get started:
+
+1. Fork the repo and clone it
+2. `dotnet build UiaCli.sln` to build the server
+3. `cd cli && go build -o ../uia.exe .` to build the CLI
+4. Make your changes and test against a real Windows app
+5. Open a PR
+
+Check the [open issues](https://github.com/amitse/uiacli/issues) for ideas, or file a new one if you hit a bug or have a feature request.
+
 ## License
 
 [MIT](LICENSE)
