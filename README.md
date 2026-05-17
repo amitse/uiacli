@@ -1,8 +1,8 @@
 # UIA CLI
 
-A command-line tool that lets AI agents (and humans) **observe and control any Windows desktop application** through [Windows UI Automation](https://learn.microsoft.com/en-us/windows/win32/winauto/entry-uiauto-win32).
+**Let AI agents see and control any Windows app.**
 
-List windows, inspect element trees, click buttons, type text, drag, scroll, take screenshots — all from the terminal, all as JSON.
+A command-line tool that exposes [Windows UI Automation](https://learn.microsoft.com/en-us/windows/win32/winauto/entry-uiauto-win32) as simple JSON commands — list windows, inspect element trees, click buttons, type text, drag, scroll, take screenshots, all from the terminal.
 
 <p align="center">
   <img src="demo.gif" alt="UIA CLI automating Calculator with ghost cursor, highlights, and annotations" width="370">
