@@ -13,6 +13,7 @@ List windows, inspect element trees, click buttons, type text, drag, scroll, tak
 </p>
 
 [![Build](https://github.com/amitse/uiacli/actions/workflows/build.yml/badge.svg)](https://github.com/amitse/uiacli/actions/workflows/build.yml)
+[![Release](https://img.shields.io/github/v/release/amitse/uiacli)](https://github.com/amitse/uiacli/releases/latest)
 ![Windows](https://img.shields.io/badge/platform-Windows-blue)
 ![.NET 8](https://img.shields.io/badge/.NET-8.0-purple)
 ![Go](https://img.shields.io/badge/CLI-Go-00ADD8)
@@ -30,13 +31,24 @@ AI agents that control a desktop need a **fast, reliable bridge** between natura
 
 ## Quick Start
 
-### Prerequisites
+### Download (recommended)
+
+1. Grab the latest zip from [**Releases**](https://github.com/amitse/uiacli/releases/latest)
+2. Extract to a folder (e.g., `C:\Tools\uiacli`)
+3. Add that folder to your `PATH`
+4. Run `uia windows`
+
+No .NET SDK or Go toolchain required — the release is fully self-contained.
+
+### Build from source
+
+#### Prerequisites
 
 - Windows 10/11
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Go 1.24+](https://go.dev/dl/) (only needed to build the CLI from source)
 
-### Build
+#### Steps
 
 ```bash
 # Build the .NET server + core libraries
