@@ -1,0 +1,16 @@
+# Created using wingetcreate
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.9.0.schema.json
+
+PackageIdentifier: amitse.UiaCli
+PackageVersion: 0.1.0
+InstallerType: zip
+NestedInstallerType: portable
+NestedInstallerFiles:
+  - RelativeFilePath: uia.exe
+    PortableCommandAlias: uia
+Installers:
+  - Architecture: x64
+    InstallerUrl: https://github.com/amitse/uiacli/releases/download/v0.1.0/uiacli-v0.1.0-win-x64.zip
+    InstallerSha256: 849E3B256935F78D36DCE2C843FD7D191A42D9B9890FAA88D73B1E63DAE877E5
+ManifestType: installer
+ManifestVersion: 1.9.0

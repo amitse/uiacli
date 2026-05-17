@@ -1,0 +1,29 @@
+# Created using wingetcreate
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.9.0.schema.json
+
+PackageIdentifier: amitse.UiaCli
+PackageVersion: 0.1.0
+PackageLocale: en-US
+Publisher: Amit Sengupta
+PublisherUrl: https://github.com/amitse
+PackageName: UIA CLI
+PackageUrl: https://github.com/amitse/uiacli
+License: MIT
+LicenseUrl: https://github.com/amitse/uiacli/blob/master/LICENSE
+ShortDescription: CLI tool for AI agents to control any Windows desktop app with visual overlay
+Description: |-
+  UIA CLI lets AI agents and humans observe and control any Windows desktop application
+  through Windows UI Automation. List windows, inspect element trees, click buttons,
+  type text, drag, scroll, take screenshots — all from the terminal, all as JSON.
+  Features a visual overlay with ghost cursor, element highlights, and annotations.
+Tags:
+  - ai
+  - automation
+  - cli
+  - desktop-automation
+  - developer-tools
+  - rpa
+  - ui-automation
+  - windows
+ManifestType: defaultLocale
+ManifestVersion: 1.9.0

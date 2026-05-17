@@ -31,7 +31,15 @@ AI agents that control a desktop need a **fast, reliable bridge** between natura
 
 ## Quick Start
 
-### Download (recommended)
+### One-liner install
+
+```powershell
+irm https://raw.githubusercontent.com/amitse/uiacli/master/install.ps1 | iex
+```
+
+Downloads the latest release to `%LOCALAPPDATA%\Programs\uiacli` and adds it to your PATH. No .NET SDK or Go toolchain required.
+
+### Download manually
 
 1. Grab the latest zip from [**Releases**](https://github.com/amitse/uiacli/releases/latest)
 2. Extract to a folder (e.g., `C:\Tools\uiacli`)
