@@ -165,7 +165,52 @@ For drawing shapes in Paint or similar apps:
 8. Verify:                 uia screenshot, check result
 ```
 
-For spirals: `r = a + b*θ`, `x = cx + r*cos(θ)`, `y = cy + r*sin(θ)` with 200+ points.
+For spirals: `r = a + b*θ`, `x = cx + r*cos(θ)`, `y = cy + r*sin(θ)` with 500+ points.
+
+**Result**: A 601-point Archimedean spiral drawn in 1.77 seconds as a continuous smooth line.
+
+---
+
+## 12. Canvas Coordinate Calibration
+
+**Problem**: For apps with no UIA tree for the canvas (like Paint), you need to find where the canvas is in screen coordinates. The window bounds include invisible DWM borders, and the screenshot coordinate system may not exactly match.
+
+**Pattern**:
+1. Click at a known screen position on the canvas
+2. Read the cursor position from the app's status bar (Paint shows "x, y px")
+3. Calculate offset: `canvasOriginScreenX = clickScreenX - canvasReportedX`
+4. Verify with a second point
+
+From our Paint calibration:
+- Click at screen (1037, 568) → Paint reports canvas (10, 10)
+- So canvas origin = screen (1027, 558)
+- Canvas center (250, 250) = screen (1277, 808)
+
+This calibration is specific to the window position. If the window moves, recalibrate.
+
+---
+
+## 13. Screenshot-to-Screen Coordinate Mapping
+
+**Problem**: Screenshot pixel coordinates do NOT simply equal `window_x + screenshot_x`. The window bounds include DWM invisible borders (~8px on each side in Windows 10/11). The actual mapping depends on window style and DPI.
+
+**Correct approach**: Don't use screenshots for coordinate calculation. Instead:
+1. Use UIA element `bounds` from the tree (precise screen coordinates)
+2. For elements without UIA, calibrate using a known clickable point (see Pattern 12)
+3. Use the calibrated offset for all subsequent coordinate-based clicks
+
+**Anti-pattern**: Eyeballing screenshot pixel positions and adding `window_x + offset`. This consistently results in 50-150px errors.
+
+---
+
+## 14. Modern Notepad Save-As Flow
+
+UWP Notepad on Windows 11 has quirks:
+- `Process.Start("notepad.exe")` may return a dead PID (broker relaunches)
+- Save As (`Ctrl+Shift+S`) opens a system file picker
+- The file picker accepts typed paths but may need Enter pressed twice
+- File format dropdown may default to a non-text format
+- Use `Ctrl+S` for re-saves (after first save establishes the path)
 
 ---
 
