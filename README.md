@@ -1,6 +1,14 @@
-# 🖥️ UIA CLI
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/logo-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="docs/logo-light.svg">
+    <img src="docs/logo-light.svg" alt="UIA CLI" width="420">
+  </picture>
+</p>
 
-**[browser-use](https://github.com/browser-use/browser-use), but for Windows desktops.** The missing piece for computer-use agents.
+<p align="center"><strong>
+  <a href="https://github.com/browser-use/browser-use">browser-use</a>, but for Windows desktops.</strong> The missing piece for computer-use agents.
+</p>
 
 AI agents can browse the web — but they can't click buttons in Notepad, fill forms in legacy enterprise apps, or automate anything without a browser. **UIA CLI fixes that.** It gives any AI agent full control of any Windows application through simple JSON commands.
 

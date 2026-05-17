@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 120">
+  <defs>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0078D4"/>
+      <stop offset="100%" stop-color="#00B4D8"/>
+    </linearGradient>
+  </defs>
+  <!-- Window icon -->
+  <rect x="20" y="20" width="80" height="80" rx="12" fill="none" stroke="url(#accent)" stroke-width="4"/>
+  <rect x="32" y="38" width="56" height="50" rx="4" fill="url(#accent)" opacity="0.15"/>
+  <line x1="20" y1="38" x2="100" y2="38" stroke="url(#accent)" stroke-width="3"/>
+  <circle cx="34" cy="29" r="4" fill="#FF5F56"/>
+  <circle cx="48" cy="29" r="4" fill="#FFBD2E"/>
+  <circle cx="62" cy="29" r="4" fill="#27C93F"/>
+  <!-- Cursor icon inside window -->
+  <path d="M52 52 L52 78 L60 72 L68 82 L72 80 L64 70 L74 68 Z" fill="#0078D4"/>
+  <!-- Text -->
+  <text x="120" y="82" font-family="Consolas, 'Courier New', monospace" font-size="72" font-weight="700" fill="#1a1a1a">UIA</text>
+  <text x="305" y="82" font-family="Consolas, 'Courier New', monospace" font-size="72" font-weight="400" fill="#555">CLI</text>
+  <!-- Tagline -->
+  <text x="122" y="108" font-family="Segoe UI, -apple-system, sans-serif" font-size="16" fill="#777">browser-use for Windows desktops</text>
+</svg>
