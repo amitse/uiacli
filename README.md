@@ -5,12 +5,20 @@
 AI agents can browse the web — but they can't click buttons in Notepad, fill forms in legacy enterprise apps, or automate anything without a browser. **UIA CLI fixes that.** It gives any AI agent full control of any Windows application through simple JSON commands.
 
 <p align="center">
-  <img src="demo.gif" alt="UIA CLI automating Calculator with ghost cursor, highlights, and annotations" width="640">
+  <img src="demo-notepad.gif" alt="UIA CLI typing into Notepad — no keyboard, no mouse, just JSON" width="600">
 </p>
 
 <p align="center">
-  <em>Ghost cursor, element highlights, and annotations — the agent computes 25 × 25 = 625 while you watch.</em>
+  <em>"No keyboard. No mouse. Just JSON." — an AI agent types into Notepad via UIA CLI.</em>
 </p>
+
+<details>
+<summary>🎬 See the visual overlay in action (Calculator demo)</summary>
+<p align="center">
+  <img src="demo.gif" alt="UIA CLI automating Calculator with ghost cursor, highlights, and annotations" width="480">
+  <br><em>Ghost cursor, element highlights, and annotations — 25 × 25 = 625.</em>
+</p>
+</details>
 
 <p align="center">
   <img src="https://img.shields.io/badge/20+_commands-blue?style=for-the-badge" alt="20+ Commands">
