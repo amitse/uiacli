@@ -124,13 +124,14 @@ public class InputSimulator
 
     public void MouseMove(int x, int y)
     {
-        Win32.SetCursorPos(x, y);
+        SendMouseMoveAbsolute(x, y);
     }
 
-    public void Drag(int fromX, int fromY, int toX, int toY, int steps = 20)
+    public void Drag(int fromX, int fromY, int toX, int toY, int steps = 40)
     {
-        Win32.SetCursorPos(fromX, fromY);
-        Thread.Sleep(50);
+        // Move to start
+        SendMouseMoveAbsolute(fromX, fromY);
+        Thread.Sleep(30);
 
         // Mouse down
         var downInput = new INPUT
@@ -139,18 +140,18 @@ public class InputSimulator
             U = new INPUTUNION { mi = new MOUSEINPUT { dwFlags = Win32.MOUSEEVENTF_LEFTDOWN } }
         };
         Win32.SendInput(1, new[] { downInput }, Marshal.SizeOf<INPUT>());
-        Thread.Sleep(50);
+        Thread.Sleep(20);
 
-        // Move in steps
+        // Move in fine steps using SendInput (generates WM_MOUSEMOVE)
         for (int i = 1; i <= steps; i++)
         {
             int x = fromX + (toX - fromX) * i / steps;
             int y = fromY + (toY - fromY) * i / steps;
-            Win32.SetCursorPos(x, y);
-            Thread.Sleep(10);
+            SendMouseMoveAbsolute(x, y);
+            Thread.Sleep(5);
         }
 
-        Thread.Sleep(50);
+        Thread.Sleep(20);
 
         // Mouse up
         var upInput = new INPUT
@@ -159,6 +160,71 @@ public class InputSimulator
             U = new INPUTUNION { mi = new MOUSEINPUT { dwFlags = Win32.MOUSEEVENTF_LEFTUP } }
         };
         Win32.SendInput(1, new[] { upInput }, Marshal.SizeOf<INPUT>());
+    }
+
+    /// <summary>
+    /// Draw a freehand path through a list of screen coordinate points.
+    /// Mouse down at first point, move through all points, mouse up at last.
+    /// Uses SendInput for each move to generate proper WM_MOUSEMOVE events.
+    /// </summary>
+    public void Freehand(int[] xs, int[] ys)
+    {
+        if (xs.Length == 0 || xs.Length != ys.Length) return;
+
+        // Move to start
+        SendMouseMoveAbsolute(xs[0], ys[0]);
+        Thread.Sleep(20);
+
+        // Mouse down
+        var downInput = new INPUT
+        {
+            Type = Win32.INPUT_MOUSE,
+            U = new INPUTUNION { mi = new MOUSEINPUT { dwFlags = Win32.MOUSEEVENTF_LEFTDOWN } }
+        };
+        Win32.SendInput(1, new[] { downInput }, Marshal.SizeOf<INPUT>());
+        Thread.Sleep(10);
+
+        // Move through all points
+        for (int i = 1; i < xs.Length; i++)
+        {
+            SendMouseMoveAbsolute(xs[i], ys[i]);
+            Thread.Sleep(2); // minimal delay — fast but generates events
+        }
+
+        Thread.Sleep(10);
+
+        // Mouse up
+        var upInput = new INPUT
+        {
+            Type = Win32.INPUT_MOUSE,
+            U = new INPUTUNION { mi = new MOUSEINPUT { dwFlags = Win32.MOUSEEVENTF_LEFTUP } }
+        };
+        Win32.SendInput(1, new[] { upInput }, Marshal.SizeOf<INPUT>());
+    }
+
+    /// <summary>Use SendInput MOUSEEVENTF_MOVE|ABSOLUTE to generate proper mouse events.</summary>
+    private static void SendMouseMoveAbsolute(int x, int y)
+    {
+        // Convert screen coords to normalized 0-65535 range
+        int screenW = Win32.GetSystemMetrics(Win32.SM_CXSCREEN);
+        int screenH = Win32.GetSystemMetrics(Win32.SM_CYSCREEN);
+        int normX = (int)((x * 65535L) / screenW);
+        int normY = (int)((y * 65535L) / screenH);
+
+        var input = new INPUT
+        {
+            Type = Win32.INPUT_MOUSE,
+            U = new INPUTUNION
+            {
+                mi = new MOUSEINPUT
+                {
+                    dx = normX,
+                    dy = normY,
+                    dwFlags = Win32.MOUSEEVENTF_MOVE | Win32.MOUSEEVENTF_ABSOLUTE
+                }
+            }
+        };
+        Win32.SendInput(1, new[] { input }, Marshal.SizeOf<INPUT>());
     }
 
     public void Scroll(int x, int y, int clicks)

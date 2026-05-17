@@ -22,6 +22,7 @@ public class ActionRequest
     [JsonPropertyName("timeoutMs")] public int? TimeoutMs { get; set; }
     [JsonPropertyName("until")] public WaitCondition? Until { get; set; }
     [JsonPropertyName("description")] public string? Description { get; set; }
+    [JsonPropertyName("points")] public List<PointPair>? Points { get; set; }
 
     // Overlay actions
     [JsonPropertyName("style")] public string? Style { get; set; }
@@ -54,6 +55,12 @@ public class BatchResponse
 {
     [JsonPropertyName("results")] public List<ActionResult> Results { get; set; } = new();
     [JsonPropertyName("totalDurationMs")] public long TotalDurationMs { get; set; }
+}
+
+public class PointPair
+{
+    [JsonPropertyName("x")] public int X { get; set; }
+    [JsonPropertyName("y")] public int Y { get; set; }
 }
 
 /// <summary>
@@ -89,6 +96,8 @@ public class ActionRequestConverter : JsonConverter<ActionRequest>
             action.Element = JsonSerializer.Deserialize<ElementQuery>(el.GetRawText(), options);
         if (root.TryGetProperty("until", out var u))
             action.Until = JsonSerializer.Deserialize<WaitCondition>(u.GetRawText(), options);
+        if (root.TryGetProperty("points", out var pts))
+            action.Points = JsonSerializer.Deserialize<List<PointPair>>(pts.GetRawText(), options);
 
         return action;
     }

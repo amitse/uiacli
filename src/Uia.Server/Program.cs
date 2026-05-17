@@ -443,6 +443,7 @@ static string BuildAutoDescription(ActionRequest action)
         "read" => $"Reading {elementName}",
         "screenshot" => "Taking screenshot",
         "scrollintoview" or "scroll_into_view" => $"Scrolling {elementName} into view",
+        "freehand" => $"Drawing freehand ({action.Points?.Count ?? 0} points)",
         _ => type
     };
 }

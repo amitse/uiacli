@@ -120,6 +120,7 @@ public class BatchExecutor
             "key" or "keypress" => DoKeyPress(action, index),
             "mousemove" => DoMouseMove(action, index),
             "drag" => DoDrag(action, index),
+            "freehand" => DoFreehand(action, index),
             "scroll" => DoScroll(action, windowHandle, index),
             "scrollintoview" or "scroll_into_view" => DoScrollIntoView(action, windowHandle, index),
             "select" => DoSelect(action, windowHandle, index),
@@ -228,6 +229,22 @@ public class BatchExecutor
         if (!action.X.HasValue || !action.Y.HasValue || !action.ToX.HasValue || !action.ToY.HasValue)
             return new ActionResult { Index = index, Ok = false, Error = new ErrorInfo { Code = "INVALID_ARGS", Message = "Drag requires x,y,toX,toY" } };
         _input.Drag(action.X.Value, action.Y.Value, action.ToX.Value, action.ToY.Value);
+        return OkResult(index);
+    }
+
+    private ActionResult DoFreehand(ActionRequest action, int index)
+    {
+        if (action.Points == null || action.Points.Count < 2)
+            return new ActionResult { Index = index, Ok = false, Error = new ErrorInfo
+            {
+                Code = "INVALID_ARGS",
+                Message = "Freehand requires 'points' array with at least 2 {x,y} pairs.",
+                Suggestion = "Example: {\"type\":\"freehand\",\"points\":[{\"x\":100,\"y\":100},{\"x\":200,\"y\":200}]}"
+            }};
+        _input.Freehand(
+            action.Points.Select(p => p.X).ToArray(),
+            action.Points.Select(p => p.Y).ToArray()
+        );
         return OkResult(index);
     }
 
