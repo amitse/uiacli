@@ -4,6 +4,14 @@ A command-line tool that lets AI agents (and humans) **observe and control any W
 
 List windows, inspect element trees, click buttons, type text, drag, scroll, take screenshots — all from the terminal, all as JSON.
 
+<p align="center">
+  <img src="demo.gif" alt="UIA CLI automating Calculator with ghost cursor, highlights, and annotations" width="370">
+</p>
+
+<p align="center">
+  <em>Ghost cursor, element highlights, and annotations — the agent clicks 25 × 25 = 625 while you watch.</em>
+</p>
+
 ![Windows](https://img.shields.io/badge/platform-Windows-blue)
 ![.NET 8](https://img.shields.io/badge/.NET-8.0-purple)
 ![Go](https://img.shields.io/badge/CLI-Go-00ADD8)
