@@ -39,6 +39,7 @@ AI agents can browse the web — but they can't click buttons in Notepad, fill f
   <a href="https://github.com/amitse/uiacli/actions/workflows/build.yml"><img src="https://github.com/amitse/uiacli/actions/workflows/build.yml/badge.svg" alt="Build"></a>
   <a href="https://github.com/amitse/uiacli/releases/latest"><img src="https://img.shields.io/github/v/release/amitse/uiacli" alt="Release"></a>
   <img src="https://img.shields.io/badge/agent_skill-npx_skills_add-8A2BE2?style=flat" alt="Agent Skill">
+  <a href="https://github.com/amitse/uiacli/discussions"><img src="https://img.shields.io/badge/Discussions-Join-blue?style=flat&logo=github" alt="Discussions"></a>
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT">
 </p>
 
