@@ -14,9 +14,8 @@ A command-line tool that exposes [Windows UI Automation](https://learn.microsoft
 
 [![Build](https://github.com/amitse/uiacli/actions/workflows/build.yml/badge.svg)](https://github.com/amitse/uiacli/actions/workflows/build.yml)
 [![Release](https://img.shields.io/github/v/release/amitse/uiacli)](https://github.com/amitse/uiacli/releases/latest)
+[![skills.sh](https://skills.sh/b/amitse/uiacli)](https://skills.sh/amitse/uiacli)
 ![Windows](https://img.shields.io/badge/platform-Windows-blue)
-![.NET 8](https://img.shields.io/badge/.NET-8.0-purple)
-![Go](https://img.shields.io/badge/CLI-Go-00ADD8)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
 ## Why
@@ -271,9 +270,15 @@ Automating real Windows apps comes with quirks — `SetCursorPos` doesn't genera
 
 **[Read LEARNINGS.md →](LEARNINGS.md)**
 
-## Copilot CLI Integration
+## Agent Skill
 
-Clone this repo and [GitHub Copilot CLI](https://github.com/github/copilot-cli) automatically picks up desktop automation tools — `uia_windows`, `uia_click`, `uia_tree`, `uia_batch`, and 8 more. No setup needed, just start asking Copilot to interact with Windows apps.
+Install as a skill for any AI coding agent (Claude Code, Copilot, Cursor, Codex, and [50+ more](https://github.com/vercel-labs/skills#supported-agents)):
+
+```bash
+npx skills add amitse/uiacli
+```
+
+This gives your agent native knowledge of how to use UIA CLI for Windows desktop automation — no configuration needed.
 
 ## Contributing
 
