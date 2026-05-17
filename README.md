@@ -12,6 +12,7 @@ List windows, inspect element trees, click buttons, type text, drag, scroll, tak
   <em>Ghost cursor, element highlights, and annotations — the agent clicks 25 × 25 = 625 while you watch.</em>
 </p>
 
+[![Build](https://github.com/amitse/uiacli/actions/workflows/build.yml/badge.svg)](https://github.com/amitse/uiacli/actions/workflows/build.yml)
 ![Windows](https://img.shields.io/badge/platform-Windows-blue)
 ![.NET 8](https://img.shields.io/badge/.NET-8.0-purple)
 ![Go](https://img.shields.io/badge/CLI-Go-00ADD8)
