@@ -256,9 +256,20 @@ The server shuts down automatically after 30 minutes of inactivity.
 
 - **Windows only** — requires Windows UI Automation APIs
 - **Single monitor DPI** — multi-monitor setups with different DPI scaling may have coordinate offset issues
-- **WinUI3/UWP apps** — modern apps with custom rendering expose minimal UIA trees; use coordinate-based fallbacks (see [LEARNINGS.md](LEARNINGS.md))
+- **WinUI3/UWP apps** — modern apps with custom rendering expose minimal UIA trees; use coordinate-based fallbacks
 - **No UAC access** — cannot automate elevated (admin) windows from a non-elevated process
 - **Local only** — the server binds to `localhost`; remote automation is not supported
+
+## 📚 Hard-Won Patterns
+
+Automating real Windows apps is full of surprises — `SetCursorPos` doesn't generate mouse events, UWP apps return dead PIDs, WinUI3 controls are invisible to UIA. We documented **14 battle-tested patterns** from automating Calculator, Paint, Notepad, and Edge:
+
+- Why `SendInput` works but `SetCursorPos` doesn't for drawing
+- The screenshot + tree correlation pattern for apps with poor accessibility
+- How to calibrate canvas coordinates when UIA bounds don't match
+- Freehand drawing: 601-point Archimedean spiral in 1.77 seconds
+
+**[Read LEARNINGS.md →](LEARNINGS.md)**
 
 ## Contributing
 
