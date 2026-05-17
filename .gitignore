@@ -7,7 +7,6 @@ publish/
 *.cache
 *.dll
 *.exe
-!uia.exe
 
 # Go
 cli/uia.exe
