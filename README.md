@@ -262,14 +262,18 @@ The server shuts down automatically after 30 minutes of inactivity.
 
 ## 📚 Hard-Won Patterns
 
-Automating real Windows apps is full of surprises — `SetCursorPos` doesn't generate mouse events, UWP apps return dead PIDs, WinUI3 controls are invisible to UIA. We documented **14 battle-tested patterns** from automating Calculator, Paint, Notepad, and Edge:
+Automating real Windows apps comes with quirks — `SetCursorPos` doesn't generate mouse events, UWP apps return temporary PIDs, some modern controls don't appear in the UIA tree. We documented **14 patterns** from working with Calculator, Paint, Notepad, and Edge:
 
 - Why `SendInput` works but `SetCursorPos` doesn't for drawing
-- The screenshot + tree correlation pattern for apps with poor accessibility
-- How to calibrate canvas coordinates when UIA bounds don't match
+- The screenshot + tree correlation trick for custom-rendered UIs
+- How to calibrate canvas coordinates when bounds don't line up
 - Freehand drawing: 601-point Archimedean spiral in 1.77 seconds
 
 **[Read LEARNINGS.md →](LEARNINGS.md)**
+
+## Copilot CLI Integration
+
+Clone this repo and [GitHub Copilot CLI](https://github.com/github/copilot-cli) automatically picks up desktop automation tools — `uia_windows`, `uia_click`, `uia_tree`, `uia_batch`, and 8 more. No setup needed, just start asking Copilot to interact with Windows apps.
 
 ## Contributing
 
